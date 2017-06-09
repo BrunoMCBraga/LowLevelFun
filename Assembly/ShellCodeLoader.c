@@ -2,7 +2,7 @@
 * 
 * Author: Bruno Braga
 * ShellCode Loader 
-* Usage: Modify the shellCodeArray to your needs.
+* Usage: Modify the shellCodeString to your needs.
 * Requirements: For Windows and tested on Windows 7
 *
 *
