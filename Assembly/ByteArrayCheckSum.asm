@@ -1,9 +1,10 @@
 ;Routine: computeCheckSum. The algorithm is:
-;												1.Compute how many dwords the string has
-;												2.Iterate over those and chain-xor the results
-;												3.Padd the remaining bytes and xor with the results of the loop
+;					     1.Compute how many dwords the string has
+;					     2.Iterate over those and chain-xor the results
+;					     3.Padd the remaining bytes and xor with the results of the loop
 ;
-;Arguments: (pointer to string (DWORD), size of string (DWORD))       
+;Arguments: (pointer to string (DWORD), size of string (DWORD)) 
+;Usage: could be combined with InLoadOrderModuleListIterator.asm to verify whether a given DLL is loaded based on a checksum
 
 ;use32 For FASM
 
