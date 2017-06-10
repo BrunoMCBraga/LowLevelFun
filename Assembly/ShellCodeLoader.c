@@ -18,11 +18,26 @@
 
 char* shellCodeString = "[SHELL_CODE_STRING]\0";
 
+unsigned short convertCharToAscii(char character){
+
+	char lowered = 0;
+
+	if (isdigit(character))
+		return character - 48;
+	else if (isalpha(character)){
+		lowered = tolower(character);
+		return lowered - 87;
+		
+	}
+
+}
+
+
 int main(int argc, char **argv){
 	
 	int shellCodeStringSize = strlen(shellCodeString);
 	int numberOfShellCodeBytes = shellCodeStringSize/2;
-	char* shellCodeBytes = (char*) malloc(numberOfShellCodeBytes + 1); 
+	unsigned char* shellCodeBytes = (char*) malloc(numberOfShellCodeBytes + 1); 
 	int errorId = 0;
 	char* errorMessage = NULL;
 	void* shellcodeMemory = 0; 	
@@ -31,8 +46,8 @@ int main(int argc, char **argv){
 	int shellCodeBytesIndex = 0;
 
 	for (shellCodeStringIndex = 0 ,shellCodeBytesIndex = 0; shellCodeStringIndex < shellCodeStringSize; shellCodeStringIndex+=2, shellCodeBytesIndex++){
-		char highOrderHexDigit = shellCodeString[shellCodeStringIndex] - '0' << 0x4;
-		char lowOrderHexDigit = shellCodeString[shellCodeStringIndex + 1] - '0';
+		unsigned short highOrderHexDigit= convertCharToAscii(shellCodeString[shellCodeStringIndex]) << 0x4;
+		unsigned short lowOrderHexDigit = convertCharToAscii(shellCodeString[shellCodeStringIndex + 1]);
 		shellCodeBytes[shellCodeBytesIndex] = highOrderHexDigit + lowOrderHexDigit;
 	}
 
